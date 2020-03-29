@@ -1,5 +1,6 @@
 const patterns = {
-    username: /^[a-z/d]{5,}$/i
+    username: /^[\w]{5,}$/i,
+    password: /^[\w!@#\$%\^&\*]{8,}/
 };
 
 const inputs = document.querySelectorAll( 'input' );
@@ -11,6 +12,7 @@ inputs.forEach(( input ) => {
     });
 });
 
+// Validates user inputs
 validation = (userinputs, regex) => {
    if( regex.test(userinputs.value) ){
        userinputs.className = 'true';
