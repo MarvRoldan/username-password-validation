@@ -4,37 +4,34 @@ const patterns = {
     password: /^[\w!@#\$%\^&\*]{8,}/i
 };
 const inputs = document.querySelectorAll( "input" );
-const userName = document.getElementById( "userName" );
-const password = document.getElementById( "password" );
-const signUpButton = document.getElementById ( "signUpButton" ); 
 
-
-
-// -- Listens to user inputs --
+// -- Listens for user inputs --
 inputs.forEach(( input ) => {
     input.addEventListener( "keyup", ( e ) => {
         validation( e.target, patterns[ e.target.attributes.name.value ] )
     });
 });
 
-// -- Validates user inputs --
+// -- Validates user inputs and store data --
+// -- .test() method: https://www.w3resource.com/javascript/object-property-method/regexp-test.php --
 validation = (userinputs, regex) => {
+    const userName = document.getElementById( "userName" );
+    const password = document.getElementById( "password" );
+    const signUpButton = document.getElementById ( "signUpButton" ); 
+
+
    if( regex.test(userinputs.value) ){
        userinputs.className = "true";
+
+       signUpButton.onclick = () => {
+        const user = userName.value;
+        const pass = password.value;
+        
+        // -- LocaStorage: https://stackoverflow.com/questions/17087636/how-to-save-data-from-a-form-with-html5-local-storage --
+        localStorage.setItem(user, pass);
+        };
+
    } else {
        userinputs.className = "false";
    }
 };
-
-// -- Local Storage --
-signUpButton.onclick = () => {
-    const user = userName.value;
-    const pass = password.value;
-
-    console.log(user);
-    console.log(pass);
-};
-
-
-
-
