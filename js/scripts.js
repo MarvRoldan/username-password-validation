@@ -13,13 +13,12 @@ inputs.forEach(( input ) => {
 });
 
 // -- Validates user inputs and store data --
-// -- .test() method: https://www.w3resource.com/javascript/object-property-method/regexp-test.php --
 validation = (userinputs, regex) => {
     const userName = document.getElementById( "userName" );
     const password = document.getElementById( "password" );
     const signUpButton = document.getElementById ( "signUpButton" ); 
 
-
+   // -- .test() method: https://www.w3resource.com/javascript/object-property-method/regexp-test.php --
    if( regex.test(userinputs.value) ){
        userinputs.className = "true";
 
